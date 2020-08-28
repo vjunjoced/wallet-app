@@ -1,0 +1,96 @@
+<div class="form-group"
+  [ngClass]="{'cs-is-open': isOpen, 'cs-select-is-up': selectIsUp, 'cs-select-is-down': !selectIsUp, 'cs-select-is-multiple': isMultiple}"
+  [class.max-items]="isMaxItems" [class.show-btn-clear]="showButtonClear">
+  <label class="form-label" for="cs-select-{{myId}}">{{label}}</label>
+
+  <div class="form-control-wrap">
+    <!--trigger select-->
+    <div class="btn cs-selection-drp {{xClass}}" id="cs-select-{{myId}}" tabindex="0" #btnTgMenu [matMenuTriggerFor]="menuSelect"
+      (menuClosed)="selectClosed()" (menuOpened)="selectOpened()">
+
+      <!--show html selected option-->
+      <ng-container
+        *ngTemplateOutlet="templateSelect ? templateSelect: defaultSelect;context: {select: currentOption, list: listCurrentOptions}">
+      </ng-container>
+
+      <!--icon delete option-->
+      <cs-nioicon (click)="delete();$event.stopPropagation()" class="btn-delete" ic="cross" *ngIf="showButtonClear && checkIsSelected">
+      </cs-nioicon>
+
+      <!--icon-->
+      <div class="ic-caret">
+        <cs-nioicon ic="caret-down-fill" *ngIf="!isOpen"></cs-nioicon>
+        <cs-nioicon ic="caret-up-fill" *ngIf="isOpen"></cs-nioicon>
+      </div>
+    </div>
+
+    <!--list options select-->
+    <mat-menu #menuSelect="matMenu" class="cs-select {{htmlId}}">
+      <!--Show input search-->
+      <div class="cnt-input-search" *ngIf="enableSearch">
+        <input (click)="$event.stopPropagation()" [(ngModel)]="inputSearchValue"
+          (keyup)="filterOptions($event.target.value)">
+
+        <div class="ic-caret">
+          <cs-nioicon ic="search"></cs-nioicon>
+        </div>
+      </div>
+
+      <button mat-menu-item [disableRipple]="true" *ngFor="let op of options" (click)="select(op)"
+        [hidden]="checkOptionIsSelected(op) || !checkFilteredOption(op)">
+        <ng-container *ngTemplateOutlet="templateOption ? templateOption: defaultOption;context:{option:op}">
+        </ng-container>
+      </button>
+
+      <div class="empty-list" *ngIf="checkEmptyList()">
+        No hay datos
+      </div>
+    </mat-menu>
+  </div>
+</div>
+
+<!--Defaul template option-->
+<ng-template #defaultOption let-option="option">
+  <ng-container *ngIf="formatOption">{{formatOption(option)}}</ng-container>
+  <ng-container *ngIf="displayField && !formatOption">{{option[displayField]}}</ng-container>
+  <ng-container *ngIf="!displayField">{{option}}</ng-container>
+</ng-template>
+
+<!--default template select simple-->
+<ng-template #defaultSelect let-select="select" let-listSelected="list">
+  <!--select simple-->
+  <ng-container *ngIf="!isMultiple">
+    <ng-container *ngIf="select">
+      <span class="text-simple text-ellipsis">
+        <ng-container *ngIf="formatSelect">{{formatSelect(select)}}</ng-container>
+        <ng-container *ngIf="displayField && !formatOption">{{select[displayField]}}</ng-container>
+        <ng-container *ngIf="!displayField">{{select}}</ng-container>
+      </span>
+    </ng-container>
+
+    <!--placeholder-->
+    <ng-container *ngIf="!select && placeholder"><span class="text-placeholder text-ellipsis">{{placeholder}}</span>
+    </ng-container>
+  </ng-container>
+
+  <!--select multiple-->
+  <ng-container *ngIf="isMultiple">
+    <ng-container *ngIf="listSelected.length > 0">
+      <div class="label-selected" *ngFor="let opt of listSelected" (click)="$event.stopPropagation()">
+        <span>
+          <ng-container *ngIf="formatSelect">{{formatSelect(opt)}}</ng-container>
+          <ng-container *ngIf="displayField && !formatOption">{{opt[displayField]}}</ng-container>
+          <ng-container *ngIf="!displayField">{{opt}}</ng-container>
+        </span>
+
+        <cs-nioicon (click)="delete(opt);$event.stopPropagation()" class="label-delete" ic="cross">
+        </cs-nioicon>
+      </div>
+    </ng-container>
+
+    <!--placeholder-->
+    <ng-container *ngIf="listSelected.length == 0 && placeholder"><span
+        class="text-placeholder text-ellipsis">{{placeholder}}</span>
+    </ng-container>
+  </ng-container>
+</ng-template>

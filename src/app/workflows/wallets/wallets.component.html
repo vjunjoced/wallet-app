@@ -1,0 +1,63 @@
+<div class="nk-block-head">
+  <div class="nk-block-head-sub"><span>Wallet</span> </div><!-- .nk-block-head-sub -->
+  <div class="nk-block-between-md g-4">
+    <div class="nk-block-head-content">
+      <h2 class="nk-block-title fw-normal">Wallet</h2>
+    </div>
+    <div class="nk-block-head-content">
+      <ul class="nk-block-tools gx-3">
+        <li><a href="javascript:void(0)" (click)="add()" class="btn btn-primary"><span>Nueva wallet</span></a></li>
+      </ul>
+    </div>
+  </div><!-- .nk-block-between -->
+</div><!-- .nk-block-head -->
+
+<div class="nk-block">
+  <div class="nk-block-head-sm">
+    <div class="nk-block-head-content">
+      <h5 class="nk-block-title title">Crypto Accounts</h5>
+    </div>
+  </div>
+
+  <div class="row g-gs">
+    <div class="col-sm-6 col-lg-4 col-xl-6 col-xxl-4" *ngFor="let wallet of wallets">
+      <div class="card card-bordered ">
+        <div class="nk-wgw">
+          <div class="nk-wgw-inner">
+            <a class="nk-wgw-name">
+              <div class="nk-wgw-icon" [matTooltip]="wallet.product?.name">
+                <img src="{{wallet.product?.image}}" >
+              </div>
+              <h5 class="nk-wgw-title title">{{wallet.name}} - <b>{{wallet.product?.symbol}}</b></h5>
+            </a>
+            <div class="nk-wgw-balance">
+              <div class="amount">{{wallet.quantity | currency:' ':'symbol':'1.0-6'}}<span
+                  class="currency currency-nio">{{wallet.product?.symbol}}</span></div>
+              <div class="amount-sm">{{wallet.quantity * wallet.product?.price | currency:' ':'symbol':'1.0-2'}}<span
+                  class="currency currency-usd">USD</span></div>
+            </div>
+          </div>
+          <div class="nk-wgw-actions">
+            <ul>
+              <li><a href="javascript:void(0)" (click)="send(wallet)"><em class="icon ni ni-arrow-up-right"></em>
+                  <span>Send</span></a></li>
+              <li><a href="javascript:void(0)" (click)="receive(wallet)"><em
+                    class="icon ni ni-arrow-down-left"></em><span>Receive</span></a></li>
+            </ul>
+          </div>
+          <div class="nk-wgw-more dropdown" dropdown>
+            <a href="javascript:void(0)" class="btn btn-icon btn-trigger" dropdownToggle><em
+                class="icon ni ni-more-h"></em></a>
+            <div class="dropdown-menu dropdown-menu-xs dropdown-menu-right" *dropdownMenu>
+              <ul class="link-list-plain sm">
+                <li><a href="javascript:void(0)" (click)="view(wallet)">Detalles</a></li>
+                <li><a href="javascript:void(0)" (click)="add(wallet)">Editar</a></li>
+                <li><a href="javascript:void(0)" (click)="delete(wallet)">Delete</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div><!-- .card -->
+    </div><!-- .col -->
+  </div>
+</div>

@@ -1,0 +1,5 @@
+<div class="custom-control custom-radio {{xClass}}">
+  <input [disabled]="isDisabled" type="radio" tabindex="0" (change)="onInput($event.target.value)" [value]="optionValue"
+    [checked]="optionValue == formControl.value" id="custom-radio-{{radioId}}" class="custom-control-input">
+  <label class="custom-control-label" for="custom-radio-{{radioId}}">{{label}}</label>
+</div>

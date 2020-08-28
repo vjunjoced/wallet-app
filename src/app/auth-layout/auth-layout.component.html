@@ -1,0 +1,112 @@
+<div class="nk-app-root">
+  <div class="nk-main">
+    <div class="nk-sidebar nk-sidebar-fixed is-theme {{sideBarCss}}" [class.nk-sidebar-active]="sideBarMenuIsOpen">
+      <div class="nk-sidebar-element nk-sidebar-head">
+        <div class="nk-sidebar-brand">
+          <a [routerLink]="['/']" class="logo-link nk-sidebar-logo">
+          </a>
+        </div>
+        <div class="nk-menu-trigger mr-n2">
+          <a href="javascript:void(0)" (click)="closeSideBarMenu()"
+            class="nk-nav-toggle nk-quick-nav-icon d-xl-none"><em class="icon ni ni-arrow-left"></em></a>
+        </div>
+      </div>
+      <div class="nk-sidebar-element">
+        <div class="nk-sidebar-body">
+          <div class="nk-sidebar-content">
+            <div class="nk-sidebar-widget d-none d-xl-block">
+              <div class="user-account-info between-center">
+                <div class="user-account-main">
+                 
+                </div>
+              </div>
+              <ul class="user-account-data gy-1">
+               
+              </ul>
+            
+            </div>
+            <!--Info in mobile stats-->
+            <div class="nk-sidebar-widget nk-sidebar-widget-full d-xl-none pt-0">
+              <a class="nk-profile-toggle toggle-expand" href="javascript:void(0)"
+                (click)="showSidebarStatsMobile = !showSidebarStatsMobile">
+                <div class="user-card-wrap">
+                  <div class="user-card">
+                    <div class="user-avatar">
+                      <span>{{getAvatar}}</span>
+                    </div>
+                    <div class="user-info">
+                      <span class="lead-text">Junior Vasquez</span>
+                      <span class="sub-text">jvasquez.x1@gmail.com</span>
+                    </div>
+                    <div class="user-action">
+                      <em class="icon ni ni-chevron-down"></em>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <div class="nk-profile-content toggle-expand-content"
+                [style.display]="showSidebarStatsMobile ? 'block': 'none'">
+                <div class="user-account-info between-center">
+                  
+                </div>
+                <ul class="user-account-data">
+                  
+                </ul>
+                <ul class="user-account-links"></ul>
+                <ul class="link-list">
+                  <li>
+                    <a [routerLink]="['/my-profile']" (click)="closeSideBarMenu()">
+                      <em class="icon ni ni-user-alt"></em>
+                      <span>My perfil</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['/my-profile/security']" (click)="closeSideBarMenu()">
+                      <em class="icon ni ni-setting-alt"></em>
+                      <span>Configuracion</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['/log-access']" (click)="closeSideBarMenu()">
+                      <em class="icon ni ni-activity-alt"></em>
+                      <span>Actividad</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!--Info in mobile stats-->
+            <app-side-menu ></app-side-menu>
+            <!-- .nk-sidebar-menu -->
+           
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nk-sidebar-overlay" *ngIf="sideBarMenuIsOpen" (click)="closeSideBarMenu()"></div>
+
+    <div class="nk-wrap">
+      <!-- main header @s -->
+      <div class="nk-header nk-header-fluid nk-header-fixed is-theme">
+        <app-top-header></app-top-header>
+      </div>
+      <!-- main header @e -->
+
+      <!-- content @s -->
+      <div class="nk-content nk-content-fluid">
+        <div class="container-xl wide-lg">
+          <div class="nk-content-body">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+      <!-- content @e -->
+
+      <!-- footer @s -->
+      <div class="nk-footer nk-footer-fluid">
+        <app-footer></app-footer>
+      </div>
+    </div>
+  </div>
+</div>

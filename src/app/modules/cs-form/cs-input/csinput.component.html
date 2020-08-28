@@ -1,0 +1,29 @@
+<div class="form-group">
+  <label class="form-label" for="input-control-{{inputId}}">{{label}}</label>
+  <div class="form-control-wrap">
+    <!--If type password-->
+    <a href="javascript:void(0)" (click)="clickShowPassword()" class="form-icon form-icon-right passcode-switch"
+      *ngIf="isPassword">
+      <cs-nioicon class="passcode-icon icon-show" *ngIf="!showPassword" ic="eye"></cs-nioicon>
+      <cs-nioicon class="passcode-icon icon-show" *ngIf="showPassword" ic="eye-off"></cs-nioicon>
+    </a>
+
+    <!--input-->
+    <input [type]="type" tabindex="0" *ngIf="type !== 'textarea'" id="input-control-{{inputId}}" [value]="value" (input)="onInput($event.target.value)"
+      class="form-control {{xClass}}" [placeholder]="placeholder"
+      [ngClass]="{'error': formControl.invalid && (formControl.touched || formControl.dirty)}">
+
+    <textarea tabindex="0" *ngIf="type === 'textarea'" id="input-control-{{inputId}}" [value]="value" (input)="onInput($event.target.value)"
+      class="form-control {{xClass}}" [placeholder]="placeholder"
+      [ngClass]="{'error': formControl.invalid && (formControl.touched || formControl.dirty)}" rows="5"></textarea>
+
+    <!-- Error-->
+    <ng-container *ngIf=" formControl.invalid && (formControl.touched || formControl.dirty)">
+      <div class="invalid" *ngIf="formControl.errors.required">{{errors.required}}</div>
+      <div class="invalid" *ngIf="formControl.errors.email">{{errors.email}}</div>
+      <div class="invalid" *ngIf="formControl.errors.minlength">{{errors.minlength}}</div>
+      <div class="invalid" *ngIf="formControl.errors.maxlength">{{errors.maxlength}}</div>
+    </ng-container>
+
+  </div>
+</div>

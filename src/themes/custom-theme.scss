@@ -1,0 +1,147 @@
+@import "../node_modules/@angular/material/theming";
+@import "../vars.scss";
+$custom-typography: mat-typography-config(
+  $font-family: "Roboto, sans-serif",
+  $headline: mat-typography-level(26px, 40px, 700),
+  $body-1: mat-typography-level(14px, 20px, 400),
+);
+
+$tv-color-primary: (
+  50: #e8f5e9,
+  100: #c8e6c9,
+  200: #a5d6a7,
+  300: #81c784,
+  400: #66bb6a,
+  500: $primary-color,
+  600: #43a047,
+  700: #388e3c,
+  800: #2e7d32,
+  900: #1b5e20,
+  A100: #b9f6ca,
+  A200: #69f0ae,
+  A400: #00e676,
+  A700: #00c853,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: white,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  ),
+);
+
+$tv-color-accent: (
+  50: #fff3e0,
+  100: #ffe0b2,
+  200: #ffcc80,
+  300: #ffb74d,
+  400: $accent-color,
+  500: #030303,
+  600: #fb8c00,
+  700: #f57c00,
+  800: #ef6c00,
+  900: #e65100,
+  A100: #ffd180,
+  A200: #ffab40,
+  A400: #ff9100,
+  A700: #ff6d00,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  ),
+);
+
+$tv-color-warn: (
+  50: #ffebee,
+  100: #ffcdd2,
+  200: #ef9a9a,
+  300: #e57373,
+  400: $warn-color,
+  500: #f44336,
+  600: #e53935,
+  700: #d32f2f,
+  800: #c62828,
+  900: #b71c1c,
+  A100: #ff8a80,
+  A200: #ff5252,
+  A400: #ff1744,
+  A700: #d50000,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  ),
+);
+
+@include mat-core($custom-typography);
+@include mat-base-typography($custom-typography);
+
+$custom-theme-primary: mat-palette($tv-color-primary, 500);
+$custom-theme-accent: mat-palette($tv-color-accent, 400);
+$custom-theme-warn: mat-palette($tv-color-warn, 400);
+$custom-theme: mat-light-theme(
+  $custom-theme-primary,
+  $custom-theme-accent,
+  $custom-theme-warn
+);
+
+@function my-mat-light-theme-foreground($color) {
+  @return (
+    base: $color,
+    divider: $black-12-opacity,
+    dividers: $black-12-opacity,
+    disabled: rgba($color, 0.48),
+    disabled-button: rgba($color, 0.4),
+    disabled-text: rgba($color, 0.48),
+    hint-text: rgba($color, 0.4),
+    secondary-text: rgba($color, 0.58),
+    icon: rgba($color, 0.54),
+    icons: rgba($color, 0.54),
+    text: rgba($color, 0.66),
+    slider-off: rgba($color, 0.26),
+    slider-off-active: rgba($color, 0.38),
+    slider-min: rgba($color, 0.38)
+  );
+}
+
+$white-foreground: my-mat-light-theme-foreground(black);
+$my-app-theme-custom: map-merge(
+  $custom-theme,
+  (
+    foreground: $white-foreground,
+  )
+);
+
+@include angular-material-theme($my-app-theme-custom);

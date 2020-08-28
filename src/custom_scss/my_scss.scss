@@ -1,0 +1,49 @@
+button.mat-menu-item:focus {
+  outline: none;
+}
+button.mat-button-base:focus {
+  outline: none;
+}
+button.mat-button-base {
+  font-family: Nunito;
+  font-weight: 700;
+
+  &.mat-flat-button {
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba(15, 172, 129, 0.2);
+    }
+
+    &:active {
+      box-shadow: 0 0 0 0.2rem rgba(15, 172, 129, 0.2);
+    }
+  }
+}
+
+app-auth-layout {
+  app-select-language {
+    .dropdown-toggle {
+      color: #abe2d3;
+      padding-top: 0px !important;
+
+      small {
+        font-weight: 500;
+      }
+
+      &:hover {
+        color: #abe2d3;
+
+        .nk-menu-icon {
+          color: #abe2d3;
+        }
+      }
+    }
+
+    .nk-menu-icon {
+      display: block !important;
+    }
+  }
+}
+
+mat-card.mat-card {
+  box-shadow: 0 1px 4px rgba(31, 43, 58, 0.15) !important;
+}

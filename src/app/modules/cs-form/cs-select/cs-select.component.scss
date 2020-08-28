@@ -1,0 +1,188 @@
+button {
+  outline: none;
+}
+
+.cs-is-open {
+  &.cs-select-is-down {
+    .cs-selection-drp {
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+  }
+
+  &.cs-select-is-up {
+    .cs-selection-drp {
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+    }
+  }
+}
+
+.cs-select-is-multiple {
+  &.max-items {
+    .cs-selection-drp {
+      min-height: 36px;
+      height: auto;
+      padding-bottom: 1px;
+
+      .label-selected {
+        margin-bottom: 4px;
+      }
+    }
+  }
+}
+
+.cs-selection-drp {
+  line-height: 1.25rem;
+  color: #3c4d62;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #dbdfea;
+  text-align: left;
+  width: 100%;
+  padding-right: 22px;
+  font-weight: 400;
+  height: 36px;
+  padding-left: 16px;
+  flex-wrap: wrap;
+  letter-spacing: initial;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  .btn-delete {
+    position: absolute;
+    top: 7px;
+    right: 26px;
+    top: 0px;
+    bottom: 0px;
+    display: flex;
+    align-items: center;
+    width: 24px;
+    justify-content: center;
+  }
+
+  .ic-caret {
+    position: absolute;
+    top: 7px;
+    right: 5px;
+  }
+
+  .text-placeholder {
+    color: rgba(191, 191, 191, 0.87);
+  }
+
+  .text-simple {
+    line-height: 1;
+  }
+
+  .label-selected {
+    padding: 2px 6px;
+    background: #ddd;
+    margin-right: 4px;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.15) inset;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: default;
+    font-weight: 600;
+
+    .label-delete {
+      margin-left: 4px;
+      height: 16px;
+      width: 16px;
+      font-size: 11px;
+      cursor: pointer;
+      margin-top: -4px;
+    }
+  }
+}
+
+.empty-list {
+  padding-left: 16px;
+  font-weight: 600;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 0px;
+
+  &.show-btn-clear {
+    .cs-selection-drp {
+      padding-right: 40px;
+    }
+  }
+}
+
+.cs-is-open {
+}
+
+::ng-deep {
+  .cs-select {
+    box-shadow: none;
+    border: 1px solid #ddd;
+
+    &.mat-menu-above {
+      border-bottom-left-radius: 0px !important;
+      border-bottom-right-radius: 0px !important;
+      border-bottom: 0px;
+    }
+
+    &.mat-menu-below {
+      border-top-left-radius: 0px !important;
+      border-top-right-radius: 0px !important;
+      border-top: 0px;
+    }
+
+    .mat-menu-item {
+      height: 36px;
+      line-height: 36px;
+    }
+
+    .cnt-input-search {
+      padding: 0px 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ddd;
+      position: relative;
+
+      input {
+        margin: 0;
+        max-width: 100%;
+        flex: 1 0 auto;
+        outline: 0;
+        text-align: left;
+        background: #fff;
+        border: 1px solid rgba(34, 36, 38, 0.15);
+        border-radius: 4px;
+        box-shadow: none;
+        padding: 6px 8px;
+        line-height: 14px;
+        width: 100%;
+        padding-right: 24px;
+      }
+
+      em.icon {
+        position: absolute;
+        top: 8px;
+        right: 20px;
+      }
+    }
+  }
+}
+
+.form-control-wrap {
+  width: 100%;
+}
+
+.input-search {
+  position: absolute;
+  padding: 0;
+  max-width: 100%;
+  width: 2.2em;
+  top: 5px;
+  left: 16px;
+  cursor: text;
+  background: none transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}

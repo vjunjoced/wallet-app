@@ -1,0 +1,29 @@
+@import "../../../vars.scss";
+
+.user-status-progress {
+  color: $warn-color;
+}
+
+.nk-notification {
+  background: #dcdcdc;
+
+  &.read {
+    background: #fff;
+  }
+}
+
+.nk-notification-empty {
+  justify-content: center;
+}
+
+.icon-status {
+  &.not-notification {
+    &::after {
+      background: transparent;
+      border: transparent;
+    }
+  }
+
+  &.has-notification {
+  }
+}

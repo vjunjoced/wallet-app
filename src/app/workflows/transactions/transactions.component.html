@@ -1,0 +1,35 @@
+<div class="nk-block-head nk-block-head-sm">
+  <div class="nk-block-between">
+    <div class="nk-block-head-content">
+      <h6 class="nk-block-title">Transacciones</h6>
+    </div>
+   
+  </div>
+</div>
+
+<div class="tranx-list tranx-list-stretch card card-bordered">
+  <div class="tranx-item" *ngFor="let trasnaction of history">
+    <div class="tranx-col">
+      <div class="tranx-info">
+        <div class="tranx-badge">
+          <span class="tranx-icon">
+            <img src="{{trasnaction.product?.image}}" alt="">
+          </span>
+        </div>
+        <div class="tranx-data">
+          <div class="tranx-label">{{getTextType(trasnaction)}} {{trasnaction.product?.name}}</div>
+          <div class="tranx-date">{{trasnaction.createdAt | date}}</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="tranx-col">
+      <div class="tranx-amount">
+        <div class="number">{{trasnaction.quantity | currency:' ':'symbol':'1.0-6'}} <span
+            class="currency currency-btc">{{trasnaction.product?.symbol}}</span></div>
+        <div class="number-sm">{{trasnaction.quantity* trasnaction.product.price |currency:' ':'symbol':'1.0-2' }} <span
+            class="currency currency-usd">USD</span></div>
+      </div>
+    </div>
+  </div>
+</div><!-- .card -->

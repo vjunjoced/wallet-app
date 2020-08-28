@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
+@import "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.scss";
+@import "vars.scss";
+@import "./themes/custom-theme";
+@import "./base_theme/dashlite.css";
+@import "./base_theme/theme-egyptian.css";
+@import "./custom_scss/my_scss.scss";
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.mat-error {
+  color: #e85347;
+}
+.mat-dialog-container {
+  position: relative;
+  border-radius: 6px !important;
+
+  .mat-dialog-title {
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  .btn-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    float: right;
+  }
+
+  .mat-dialog-actions {
+    margin-bottom: -16px;
+  }
+}

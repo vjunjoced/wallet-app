@@ -1,0 +1,17 @@
+<a href="javascript:void(0)" class="btn btn-trigger btn-icon btn-close" (click)="close()">
+  <cs-nioicon ic="cross"></cs-nioicon>
+</a>
+
+<h5 mat-dialog-title>Recibir {{data.product?.name}}</h5>
+
+<div mat-dialog-content>
+  <br>
+  <div class="caption-text">
+    Tu direccion de <b>{{data.product?.symbol}}</b> es la siguiente: 
+  </div>
+  <br>
+
+  <h4>{{data.address}}</h4>
+  <br>
+  <br>
+</div><!-- .modal-body -->

@@ -1,0 +1,36 @@
+<a href="javascript:void(0)" class="btn btn-trigger btn-icon btn-close" (click)="close()">
+  <cs-nioicon ic="cross"></cs-nioicon>
+</a>
+
+<h5 mat-dialog-title *ngIf="!data">Nueva wallet</h5>
+<h5 mat-dialog-title *ngIf="data">Editar wallet</h5>
+
+<div mat-dialog-content>
+  <form [formGroup]="formWallet.form">
+    <cs-input label="Nombre" type="text" formControlName="name" [errors]="formWallet.nameError"></cs-input>
+
+    <cs-select label="Producto" *ngIf="!data" placeholder="Seleccione un producto" formControlName="product"
+      xClass="cs-select-margin" [options]="listProducts" [displayField]="'name'">
+    </cs-select>
+
+    <div class="row gy-3" *ngIf="data">
+      <div class="col-md-6">
+        <span class="sub-text">Producto</span>
+        <span class="caption-text">{{data.product.name}}</span>
+      </div>
+    </div>
+    <br>
+  </form>
+</div><!-- .modal-body -->
+
+<mat-dialog-actions align="end">
+  <ul class="align-center flex-wrap flex-sm-nowrap gx-2 gy-2">
+    <li>
+      <button class="btn btn-light btn-block" [disabled]="loading" (click)="close()">Cancelar</button>
+    </li>
+    <li>
+      <button class="btn btn-primary btn-block" [disabled]="formWallet.form.invalid || loading"
+        (click)="clickSave()">Guardar</button>
+    </li>
+  </ul>
+</mat-dialog-actions>

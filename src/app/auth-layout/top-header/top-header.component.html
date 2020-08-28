@@ -1,0 +1,76 @@
+<div class="container-fluid">
+  <div class="nk-header-wrap">
+    <div class="nk-menu-trigger d-xl-none ml-n1">
+      <a href="javascript:void(0)" (click)="openSideBarMenu()" class="nk-nav-toggle nk-quick-nav-icon">
+        <em class="icon ni ni-menu"></em>
+      </a>
+    </div>
+    <div class="nk-header-brand d-xl-none">
+      <a href="html/crypto/index.html" class="logo-link">
+      </a>
+    </div>
+    <div class="nk-header-tools">
+      <ul class="nk-quick-nav">
+        <!-- user info-->
+        <li class="dropdown user-dropdown" dropdown>
+          <a href="javascript:void(0)" class="dropdown-toggle" dropdownToggle>
+            <div class="user-toggle">
+              <div class="user-avatar sm">
+                <em class="icon ni ni-user-alt"></em>
+              </div>
+              <div class="user-info d-none d-md-block">
+                <div class="user-name dropdown-indicator">Junior Vasquez</div>
+              </div>
+            </div>
+          </a>
+          <div class="dropdown-menu dropdown-menu-md dropdown-menu-right dropdown-menu-s1" *dropdownMenu>
+            <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
+              <div class="user-card">
+                <div class="user-avatar">
+                  <span>JV</span>
+                </div>
+                <div class="user-info">
+                  <span class="lead-text">Junior Vasquez</span>
+                  <span class="sub-text">jvasquez.x1@gmail.com</span>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown-inner">
+              <ul class="link-list">
+                <li>
+                  <a [routerLink]="['/my-profile']">
+                    <em class="icon ni ni-user-alt"></em>
+                    <span>My perfil</span>
+                  </a>
+                </li>
+                <li>
+                  <a [routerLink]="['/my-profile/security']">
+                    <em class="icon ni ni-setting-alt"></em>
+                    <span>Configuracion</span>
+                  </a>
+                </li>
+                <li>
+                  <a [routerLink]="['/log-access']">
+                    <em class="icon ni ni-activity-alt"></em>
+                    <span>Actividad</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="dropdown-inner">
+              <ul class="link-list">
+                <li>
+                  <a href="javascript:void(0)" (click)="signOut()">
+                    <em class="icon ni ni-signout"></em>
+                    <span>Salir</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+       
+      </ul>
+    </div>
+  </div>
+</div>

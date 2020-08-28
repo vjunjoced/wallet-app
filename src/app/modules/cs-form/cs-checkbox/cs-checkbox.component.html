@@ -1,0 +1,5 @@
+<div class="custom-control custom-checkbox {{xClass}}">
+  <input type="checkbox" tabindex="0" [value]="formControl.value" class="custom-control-input" [checked]="formControl.value"
+    id="custom-check-{{checkboxId}}" (change)="onInput($event.target.checked)">
+  <label class="custom-control-label" for="custom-check-{{checkboxId}}">{{label}}</label>
+</div>
